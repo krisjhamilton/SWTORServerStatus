@@ -1,14 +1,15 @@
 #include <pebble.h>
  
 Window* window;
-TextLayer *title_layer, *state_layer, *name_layer, *description_layer, *time_layer;
+TextLayer *title_layer, *state_layer, *name_layer, *description_layer, *population_layer, *time_layer;
 
-char state_buffer[64], name_buffer[64], description_buffer[64], time_buffer[32];
+char state_buffer[64], name_buffer[64], description_buffer[64], population_buffer[64], time_buffer[32];
 
 enum {
 	KEY_STATE = 0,
 	KEY_NAME = 1,
 	KEY_DESCRIPTION = 2,
+	KEY_POPULATION = 3,
 };
 
 void process_tuple(Tuple *t)
@@ -39,6 +40,11 @@ void process_tuple(Tuple *t)
 			//Temperature received
 			snprintf(description_buffer, sizeof("Description: couldbereallylongname"), "Count: %s", string_value);
 			text_layer_set_text(description_layer, (char*) &description_buffer);
+			break;
+		case KEY_POPULATION:
+			//Temperature received
+			snprintf(population_buffer, sizeof("Population: couldbereallylongname"), "Population: %s", string_value);
+			text_layer_set_text(population_layer, (char*) &population_buffer);
 			break;
 	}
 
@@ -92,7 +98,7 @@ void window_load(Window *window)
 	text_layer_set_text(state_layer, "State: N/A");
 	layer_add_child(window_get_root_layer(window), text_layer_get_layer(state_layer));
 
-	name_layer = init_text_layer(GRect(5,60, 144, 30), GColorBlack, GColorClear, "RESOURCE_ID_GOTHIC_18", GTextAlignmentLeft);
+	name_layer = init_text_layer(GRect(5,65, 144, 30), GColorBlack, GColorClear, "RESOURCE_ID_GOTHIC_18", GTextAlignmentLeft);
 	text_layer_set_text(name_layer, "Server(s): N/A");
 	layer_add_child(window_get_root_layer(window), text_layer_get_layer(name_layer));
 
@@ -100,7 +106,11 @@ void window_load(Window *window)
 	text_layer_set_text(description_layer, "Count: N/A");
 	layer_add_child(window_get_root_layer(window), text_layer_get_layer(description_layer));
 	
-	time_layer = init_text_layer(GRect(5, 120, 144, 30), GColorBlack, GColorClear, "RESOURCE_ID_GOTHIC_18", GTextAlignmentLeft);
+	population_layer = init_text_layer(GRect(5, 105, 144, 30), GColorBlack, GColorClear, "RESOURCE_ID_GOTHIC_18", GTextAlignmentLeft);
+	text_layer_set_text(population_layer, "Population: N/A");
+	layer_add_child(window_get_root_layer(window), text_layer_get_layer(population_layer));
+	
+	time_layer = init_text_layer(GRect(5, 140, 144, 30), GColorBlack, GColorClear, "RESOURCE_ID_GOTHIC_18", GTextAlignmentLeft);
 	text_layer_set_text(time_layer, "Last updated: N/A");
 	layer_add_child(window_get_root_layer(window), text_layer_get_layer(time_layer));
 }
@@ -111,6 +121,7 @@ void window_unload(Window *window)
 	text_layer_destroy(state_layer);
 	text_layer_destroy(name_layer);
 	text_layer_destroy(description_layer);
+	text_layer_destroy(population_layer);
 	text_layer_destroy(time_layer);
 }
 

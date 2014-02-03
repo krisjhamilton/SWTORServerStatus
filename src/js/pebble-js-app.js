@@ -17,12 +17,13 @@ var getWeather = function() {
 	var state = json.SWTORServerState.server_state;
 	var name = json.SWTORServerState.server_name;
 	var description = json.SWTORServerState.server_desc;
+	var population = json.SWTORServerState.server_load_txt;
 	
 	//Console output to check all is working.
 	//console.log("It is " + temperature + " degrees in " + location + " today!");
 	
 	//Construct a key-value dictionary	
-	var dict = {"KEY_STATE" : state, "KEY_NAME": name, "KEY_DESCRIPTION": description};
+	var dict = {"KEY_STATE" : state, "KEY_NAME": name, "KEY_DESCRIPTION": description, "KEY_POPULATION": population};
 	
 	//Send data to watch for display
 	Pebble.sendAppMessage(dict);
