@@ -84,11 +84,11 @@ static TextLayer* init_text_layer(GRect location, GColor colour, GColor backgrou
  
 void window_load(Window *window)
 {
-	title_layer = init_text_layer(GRect(5, 0, 144, 30), GColorBlack, GColorClear, "RESOURCE_ID_GOTHIC_18", GTextAlignmentLeft);
+	title_layer = init_text_layer(GRect(0, 0, 144, 30), GColorBlack, GColorClear, "RESOURCE_ID_GOTHIC_18", GTextAlignmentCenter);
 	text_layer_set_text(title_layer, "SWTOR Server Status");
 	layer_add_child(window_get_root_layer(window), text_layer_get_layer(title_layer));
 
-	state_layer = init_text_layer(GRect(5, 35, 144, 30), GColorBlack, GColorClear, "RESOURCE_ID_GOTHIC_18", GTextAlignmentLeft);
+	state_layer = init_text_layer(GRect(0, 25, 144, 30), GColorBlack, GColorClear, "RESOURCE_ID_GOTHIC_24", GTextAlignmentCenter);
 	text_layer_set_text(state_layer, "State: N/A");
 	layer_add_child(window_get_root_layer(window), text_layer_get_layer(state_layer));
 
@@ -100,7 +100,7 @@ void window_load(Window *window)
 	text_layer_set_text(description_layer, "Count: N/A");
 	layer_add_child(window_get_root_layer(window), text_layer_get_layer(description_layer));
 	
-	time_layer = init_text_layer(GRect(5, 110, 144, 30), GColorBlack, GColorClear, "RESOURCE_ID_GOTHIC_18", GTextAlignmentLeft);
+	time_layer = init_text_layer(GRect(5, 120, 144, 30), GColorBlack, GColorClear, "RESOURCE_ID_GOTHIC_18", GTextAlignmentLeft);
 	text_layer_set_text(time_layer, "Last updated: N/A");
 	layer_add_child(window_get_root_layer(window), text_layer_get_layer(time_layer));
 }
