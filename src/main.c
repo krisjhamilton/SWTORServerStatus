@@ -98,19 +98,19 @@ void window_load(Window *window)
 	text_layer_set_text(state_layer, "State: N/A");
 	layer_add_child(window_get_root_layer(window), text_layer_get_layer(state_layer));
 
-	name_layer = init_text_layer(GRect(5,65, 144, 30), GColorBlack, GColorClear, "RESOURCE_ID_GOTHIC_18", GTextAlignmentLeft);
+	name_layer = init_text_layer(GRect(5,60, 144, 30), GColorBlack, GColorClear, "RESOURCE_ID_GOTHIC_18", GTextAlignmentLeft);
 	text_layer_set_text(name_layer, "Server(s): N/A");
 	layer_add_child(window_get_root_layer(window), text_layer_get_layer(name_layer));
 
-	description_layer = init_text_layer(GRect(5, 85, 144, 30), GColorBlack, GColorClear, "RESOURCE_ID_GOTHIC_18", GTextAlignmentLeft);
+	description_layer = init_text_layer(GRect(5, 80, 144, 30), GColorBlack, GColorClear, "RESOURCE_ID_GOTHIC_18", GTextAlignmentLeft);
 	text_layer_set_text(description_layer, "Count: N/A");
 	layer_add_child(window_get_root_layer(window), text_layer_get_layer(description_layer));
 	
-	population_layer = init_text_layer(GRect(5, 105, 144, 30), GColorBlack, GColorClear, "RESOURCE_ID_GOTHIC_18", GTextAlignmentLeft);
+	population_layer = init_text_layer(GRect(5, 100, 144, 30), GColorBlack, GColorClear, "RESOURCE_ID_GOTHIC_18", GTextAlignmentLeft);
 	text_layer_set_text(population_layer, "Population: N/A");
 	layer_add_child(window_get_root_layer(window), text_layer_get_layer(population_layer));
 	
-	time_layer = init_text_layer(GRect(5, 140, 144, 30), GColorBlack, GColorClear, "RESOURCE_ID_GOTHIC_18", GTextAlignmentLeft);
+	time_layer = init_text_layer(GRect(5, 130, 144, 30), GColorBlack, GColorClear, "RESOURCE_ID_GOTHIC_18", GTextAlignmentLeft);
 	text_layer_set_text(time_layer, "Last updated: N/A");
 	layer_add_child(window_get_root_layer(window), text_layer_get_layer(time_layer));
 }

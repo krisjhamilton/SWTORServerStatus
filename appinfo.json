@@ -7,15 +7,15 @@
         "KEY_STATE": 0,
         "KEY_DESCRIPTION": 2
     },
-    "longName": "SDKTut6",
+    "longName": "SWTOR Server Status",
     "versionCode": 1,
     "capabilities": [
         ""
     ],
-    "shortName": "SDKTut6",
-    "companyName": "Chris Lewis",
+    "shortName": "SWTORSS",
+    "companyName": "AK Studio",
     "watchapp": {
-        "watchface": true
+        "watchface": false
     },
     "resources": {
         "media": []
