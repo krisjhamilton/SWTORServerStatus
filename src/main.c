@@ -2,7 +2,7 @@
  
 Window* window;
 TextLayer *title_layer, *state_layer, *name_layer, *description_layer, *population_layer, *time_layer;
-
+static ActionBarLayer *action_bar;
 char state_buffer[64], name_buffer[64], description_buffer[64], population_buffer[64], time_buffer[32];
 
 enum {
@@ -11,6 +11,27 @@ enum {
 	KEY_DESCRIPTION = 2,
 	KEY_POPULATION = 3,
 };
+
+static void up_click_handler(ClickRecognizerRef recognizer, void *context) {
+  
+}
+
+static void down_click_handler(ClickRecognizerRef recognizer, void *context) {
+  
+}
+
+static void select_click_handler(ClickRecognizerRef recognizer, void *context) {
+  
+}
+
+
+static void click_config_provider(void *context) {
+  window_single_click_subscribe(BUTTON_ID_SELECT, select_click_handler);
+  window_single_click_subscribe(BUTTON_ID_UP, up_click_handler);
+  window_single_click_subscribe(BUTTON_ID_DOWN, down_click_handler);
+  
+}
+
 
 void process_tuple(Tuple *t)
 {
@@ -90,11 +111,16 @@ static TextLayer* init_text_layer(GRect location, GColor colour, GColor backgrou
  
 void window_load(Window *window)
 {
+	// Action Bar
+  	//action_bar = action_bar_layer_create();
+  	//action_bar_layer_add_to_window(action_bar, window);
+  	//action_bar_layer_set_click_config_provider(action_bar, click_config_provider);
+	
 	title_layer = init_text_layer(GRect(0, 0, 144, 30), GColorBlack, GColorClear, "RESOURCE_ID_GOTHIC_18", GTextAlignmentCenter);
 	text_layer_set_text(title_layer, "SWTOR Server Status");
 	layer_add_child(window_get_root_layer(window), text_layer_get_layer(title_layer));
 
-	state_layer = init_text_layer(GRect(0, 25, 144, 30), GColorBlack, GColorClear, "RESOURCE_ID_GOTHIC_24", GTextAlignmentCenter);
+	state_layer = init_text_layer(GRect(0, 25, 144, 30), GColorBlack, GColorClear, "RESOURCE_ID_GOTHIC_24_BOLD", GTextAlignmentCenter);
 	text_layer_set_text(state_layer, "State: N/A");
 	layer_add_child(window_get_root_layer(window), text_layer_get_layer(state_layer));
 
@@ -117,6 +143,7 @@ void window_load(Window *window)
  
 void window_unload(Window *window)
 {	
+	//action_bar_layer_destroy(action_bar);
 	text_layer_destroy(title_layer);
 	text_layer_destroy(state_layer);
 	text_layer_destroy(name_layer);
@@ -149,6 +176,7 @@ void tick_callback(struct tm *tick_time, TimeUnits units_changed)
 void init()
 {
 	window = window_create();
+	//window_set_fullscreen(window, true);
 	WindowHandlers handlers = {
 		.load = window_load,
 		.unload = window_unload
@@ -163,10 +191,14 @@ void init()
 	tick_timer_service_subscribe(MINUTE_UNIT, tick_callback);
 
 	window_stack_push(window, true);
+	
+
+
 }
  
 void deinit()
 {
+
 	tick_timer_service_unsubscribe();
 	
 	window_destroy(window);

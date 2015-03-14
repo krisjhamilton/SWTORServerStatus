@@ -1,30 +1,32 @@
 {
-    "versionLabel": "1.0.0",
-    "uuid": "7d63a2c4-6e17-47f4-8a0b-ca32de287313",
     "appKeys": {
+        "KEY_DESCRIPTION": 2,
         "KEY_NAME": 1,
         "KEY_POPULATION": 3,
-        "KEY_STATE": 0,
-        "KEY_DESCRIPTION": 2
+        "KEY_STATE": 0
     },
-    "longName": "SWTOR Server Status",
-    "versionCode": 1,
     "capabilities": [
         ""
     ],
-    "shortName": "SWTORSS",
     "companyName": "AK Studio",
-    "watchapp": {
-        "watchface": false
-    },
+    "longName": "SWTOR Server Status",
+    "projectType": "native",
     "resources": {
         "media": [
             {
+                "file": "images/icon.png",
                 "menuIcon": true,
-                "type": "png",
                 "name": "ICON",
-                "file": "images/icon.png"
+                "type": "png"
             }
         ]
+    },
+    "sdkVersion": "2",
+    "shortName": "SWTORSS",
+    "uuid": "7d63a2c4-6e17-47f4-8a0b-ca32de287313",
+    "versionCode": 1,
+    "versionLabel": "2.1",
+    "watchapp": {
+        "watchface": false
     }
 }
